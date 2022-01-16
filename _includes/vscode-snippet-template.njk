@@ -1,13 +1,13 @@
 ---
 permalink: "{{ page.filePathStem }}.json"
 ---
-{# TODO wrap each {{ content }} line in quotes to populate body  array #}
 {
-  "{{ name }}": {
+  "{{ name }}": { {% if scope %}
+    "scope": "{{ scope }}",{% endif %}
     "prefix": "{{ prefix }}",
     "body": [
-      {{ content | trim | indent(6) }}
+      {{ content | trim | formatSnippetBody | indent(6) | safe }}
     ],
-    "description": "{{ description }}"
+    "description": "{% if description %}{{ description }}{% endif %}"
   }
 }
