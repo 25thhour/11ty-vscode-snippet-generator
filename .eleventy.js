@@ -10,4 +10,11 @@ module.exports = function (eleventyConfig) {
 
     return formattedSnippet.join("\n");
   });
+
+  return {
+    dir: {
+      input: "src",
+      includes: "../_includes",
+    },
+  };
 };
