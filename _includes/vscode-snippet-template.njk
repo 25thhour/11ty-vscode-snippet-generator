@@ -1,0 +1,13 @@
+---
+permalink: "{{ page.filePathStem }}.json"
+---
+{# TODO wrap each {{ content }} line in quotes to populate body  array #}
+{
+  "{{ name }}": {
+    "prefix": "{{ prefix }}",
+    "body": [
+      {{ content | trim | indent(6) }}
+    ],
+    "description": "{{ description }}"
+  }
+}

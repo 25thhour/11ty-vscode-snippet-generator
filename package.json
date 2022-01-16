@@ -1,0 +1,21 @@
+{
+  "name": "11ty-vscode-snippet-generator",
+  "version": "1.0.0",
+  "description": "11ty vscode snippet generator",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "keywords": [
+    "11ty",
+    "vscode",
+    "snippets",
+    "visual studio code"
+  ],
+  "author": "James Deane",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0"
+  }
+}
