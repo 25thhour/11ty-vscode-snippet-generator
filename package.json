@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx @11ty/eleventy && npm run prettier",
     "dev": "npx @11ty/eleventy --serve",
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
     "prettier": "npx prettier --write _site/**/*.json"
   },
   "keywords": [
