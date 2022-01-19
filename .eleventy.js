@@ -9,13 +9,20 @@ module.exports = function (eleventyConfig) {
     const formattedSnippet = snippet.map((line, index) => {
       // count the number of leading spaces or \t chars
       const indentCount = line.search(/\S/) !== -1 ? line.search(/\S/) : 0;
-      const newLine = line
-        // remove the leading whitespace
-        .trimStart()
-        // add a \t for each tabstop according to indentCount
-        .replace(/^/, "\t".repeat(indentCount / indent));
-      // don't add a comma after the last line
-      return index === snippet.length - 1 ? `"${newLine}"` : `"${newLine}",`;
+      let newLine;
+      // no need to transform if tabs in use vs spaces
+      if (line.charAt(0) === "\t") {
+        return index === snippet.length - 1 ? `"${line}"` : `"${line}",`;
+      } else {
+        // handle space based tabs
+        newLine = line
+          // remove the leading whitespace
+          .trimStart()
+          // add a \t for each tabstop according to indentCount
+          .replace(/^/, "\t".repeat(indentCount / indent));
+        // don't add a comma after the last line
+        return index === snippet.length - 1 ? `"${newLine}"` : `"${newLine}",`;
+      }
     });
 
     return formattedSnippet.join("\n");
