@@ -1,28 +1,25 @@
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addNunjucksFilter("formatSnippetBody", function (content) {
+  eleventyConfig.addShortcode("formatSnippetBody", function (content, indent) {
     // escape " and create array of lines
-    const snippet = content.replace(/"/g, '\\"').split("\n");
-    // default indentation
-    // TODO make indent value configurable
-    const indent = 2;
+    const snippet = content.replace(/"/g, '\\"').trim().split("\n");
+    const spaceIndent = indent > 0 ? indent : 2;
     // wrap each line in double quotes
     const formattedSnippet = snippet.map((line, index) => {
-      // count the number of leading spaces or \t chars
-      const indentCount = line.search(/\S/) !== -1 ? line.search(/\S/) : 0;
-      let newLine;
-      // no need to transform if tabs in use vs spaces
+      // if lines are indented with tabs, no need to transform
       if (line.charAt(0) === "\t") {
         return index === snippet.length - 1 ? `"${line}"` : `"${line}",`;
-      } else {
-        // handle space based tabs
-        newLine = line
-          // remove the leading whitespace
-          .trimStart()
-          // add a \t for each tabstop according to indentCount
-          .replace(/^/, "\t".repeat(indentCount / indent));
-        // don't add a comma after the last line
-        return index === snippet.length - 1 ? `"${newLine}"` : `"${newLine}",`;
       }
+
+      // if lines are indented with spaces, transform to tabs
+      // count the number of leading spaces
+      const indentCount = line.search(/\S/) !== -1 ? line.search(/\S/) : 0;
+      const newLine = line
+        // remove the leading spaces
+        .trimStart()
+        // add a \t for each tabstop according to indentCount
+        .replace(/^/, "\t".repeat(indentCount / spaceIndent));
+      // don't add a comma after the last line
+      return index === snippet.length - 1 ? `"${newLine}"` : `"${newLine}",`;
     });
 
     return formattedSnippet.join("\n");
