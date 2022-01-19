@@ -4,8 +4,9 @@
   "description": "11ty vscode snippet generator",
   "main": "index.js",
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "dev": "npx @11ty/eleventy --serve"
+    "build": "npx @11ty/eleventy && npm run prettier",
+    "dev": "npx @11ty/eleventy --serve",
+    "prettier": "npx prettier --write _site/**/*.json"
   },
   "keywords": [
     "11ty",
@@ -16,6 +17,7 @@
   "author": "James Deane",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0"
+    "@11ty/eleventy": "^1.0.0",
+    "prettier": "^2.5.1"
   }
 }
