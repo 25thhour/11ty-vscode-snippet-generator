@@ -1,6 +1,6 @@
 ---
 name: snippet-name-goes-here
-prefix: badger
+prefix: badger:tab
 description: snippet description goes here
 scope: javascript, typescript
 ---
@@ -9,8 +9,8 @@ const req = async fetch($1)
 const res = await req.json()
 const string = "badger" // inline comment test
 for (const item of res) {
-  if (item.name.includes(string)) {
-    console.log(item.name)
-  }
+	if (item.name.includes(string)) {
+		console.log(item.name)
+	}
 }
 $0

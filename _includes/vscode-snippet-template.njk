@@ -6,7 +6,7 @@ permalink: "{{ page.filePathStem }}.json"
     "scope": "{{ scope }}",{% endif %}
     "prefix": "{{ prefix }}",
     "body": [
-      {{ content | trim | formatSnippetBody | indent(6) | safe }}
+      {% formatSnippetBody content, indent %}
     ],
     "description": "{% if description %}{{ description }}{% endif %}"
   }
