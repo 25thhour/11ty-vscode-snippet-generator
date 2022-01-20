@@ -22,6 +22,8 @@ module.exports = function (eleventyConfig) {
     return formattedSnippet.join("\n");
   });
 
+  eleventyConfig.addFilter('isArray', value => Array.isArray(value))
+
   return {
     dir: {
       input: "snippets",
