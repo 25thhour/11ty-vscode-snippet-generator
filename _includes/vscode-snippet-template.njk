@@ -2,9 +2,14 @@
 permalink: "{{ page.filePathStem }}.json"
 ---
 {
-  "{{ name }}": { {% if scope %}
-    "scope": "{{ scope }}",{% endif %}
-    "prefix": "{{ prefix }}",
+  "{{ name }}": {
+    "prefix": {% if (prefix | isArray) -%}[
+      {%- for prefix in prefix -%}
+        "{{ prefix }}"{% if not loop.last %}, {% endif -%}
+      {% endfor %}]
+      {%- else -%}
+      "{{ prefix }}"
+      {%- endif -%},
     "body": [
       {% formatSnippetBody content, indent %}
     ],
