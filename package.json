@@ -5,15 +5,20 @@
   "main": "index.js",
   "scripts": {
     "build": "npx @11ty/eleventy && npm run prettier",
-    "dev": "npx @11ty/eleventy --serve",
-    "debug": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
-    "prettier": "npx prettier --write _site/**/*.json"
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy --watch",
+    "dev": "npx @11ty/eleventy --watch",
+    "prettier": "npx prettier --write dist/**/*.json",
+    "start": "npx @11ty/eleventy --serve"
   },
   "keywords": [
     "11ty",
-    "vscode",
+    "njk",
+    "nunjucks",
+    "snippet-generator",
     "snippets",
-    "visual studio code"
+    "visual studio code",
+    "vscode-snippets",
+    "vscode"
   ],
   "author": "James Deane",
   "license": "MIT",
