@@ -4,8 +4,9 @@
   "description": "11ty vscode snippet generator",
   "scripts": {
     "postprocess": "copyfiles -f dist/generator.code-snippets .vscode/",
-    "build": "npm-run-all build:* prettier postprocess",
+    "build": "npm-run-all clean build:* prettier postprocess",
     "build:eleventy": "npx @11ty/eleventy",
+    "clean": "rimraf dist",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy --watch",
     "dev": "npx @11ty/eleventy --watch",
     "prettier": "npx prettier --write dist/**/**.{json,code-snippets}",
@@ -27,6 +28,7 @@
     "@11ty/eleventy": "^1.0.0",
     "copyfiles": "^2.4.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2"
   }
 }
