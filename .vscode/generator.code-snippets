@@ -1,5 +1,6 @@
 {
-  // Place your 11ty-vscode-snippet-generator workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // This file was generated automatically from the snippets in the `./snippets/generator/*` directory.
+  // These snippets are scoped to this project *only*. Each snippet is defined under a snippet name and has a prefix, body and
   // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
   // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
   // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
@@ -7,13 +8,13 @@
   // Placeholders with the same ids are connected.
   // Example:
   // "Print to console": {
-  // 	"scope": "javascript,typescript",
-  // 	"prefix": "log",
-  // 	"body": [
-  // 		"console.log('$1');",
-  // 		"$2"
-  // 	],
-  // 	"description": "Log output to console"
+  //  "scope": "javascript,typescript",
+  //  "prefix": "log",
+  //  "body": [
+  //    "console.log('$1');",
+  //    "$2"
+  //  ],
+  //  "description": "Log output to console"
   // }
 
   "create snippet": {
@@ -43,5 +44,28 @@
       "${0:snippet code goes here!}"
     ],
     "description": "Snippet template that uses a custom (not eq 2) space indent. Add output to ./vscode/generator.code-snippets"
+  },
+
+  "vscode built-in variables": {
+    "prefix": "vsc-var",
+    "body": [
+      "$CURRENT_YEAR - CURRENT_YEAR",
+      "$CURRENT_YEAR_SHORT - CURRENT_YEAR_SHORT",
+      "$CURRENT_MONTH - CURRENT_MONTH",
+      "$CURRENT_MONTH_NAME - CURRENT_MONTH_NAME",
+      "$CURRENT_MONTH_NAME_SHORT - CURRENT_MONTH_NAME_SHORT",
+      "$CURRENT_DATE - CURRENT_DATE",
+      "$CURRENT_DAY_NAME - CURRENT_DAY_NAME",
+      "$CURRENT_DAY_NAME_SHORT - CURRENT_DAY_NAME_SHORT",
+      "$CURRENT_HOUR - CURRENT_HOUR",
+      "$CURRENT_MINUTE - CURRENT_MINUTE",
+      "$CURRENT_SECOND - CURRENT_SECOND",
+      "$CURRENT_SECONDS_UNIX - CURRENT_SECONDS_UNIX",
+      "",
+      "$RANDOM - RANDOM",
+      "$RANDOM_HEX - RANDOM_HEX",
+      "$UUID - UUID"
+    ],
+    "description": ""
   }
 }

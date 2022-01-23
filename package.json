@@ -2,12 +2,13 @@
   "name": "11ty-vscode-snippet-generator",
   "version": "1.0.0",
   "description": "11ty vscode snippet generator",
-  "main": "index.js",
   "scripts": {
-    "build": "npx @11ty/eleventy && npm run prettier",
+    "postprocess": "copyfiles -f dist/generator.code-snippets .vscode/",
+    "build": "npm-run-all build:* prettier postprocess",
+    "build:eleventy": "npx @11ty/eleventy",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy --watch",
     "dev": "npx @11ty/eleventy --watch",
-    "prettier": "npx prettier --write dist/**/*.json",
+    "prettier": "npx prettier --write dist/**/**.{json,code-snippets}",
     "start": "npx @11ty/eleventy --serve"
   },
   "keywords": [
@@ -24,6 +25,8 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
+    "copyfiles": "^2.4.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1"
   }
 }
