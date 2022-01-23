@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "11ty vscode snippet generator",
   "scripts": {
-    "postprocess": "copyfiles -f dist/generator.code-snippets .vscode/",
+    "postprocess": "copyfiles -f dist/helpers.code-snippets .vscode/",
     "build": "npm-run-all clean build:* prettier postprocess",
     "build:eleventy": "npx @11ty/eleventy",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist .vscode",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy --watch",
     "dev": "npx @11ty/eleventy --watch",
     "prettier": "npx prettier --write dist/**/**.{json,code-snippets}",
