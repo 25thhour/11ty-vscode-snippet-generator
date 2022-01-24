@@ -1,4 +1,4 @@
-{%- for snippet in snippetList | reverse %}
+{% for snippet in snippetList | reverse %}
 {%- set name = snippet.data.name -%}
 {%- set prefix = snippet.data.prefix -%}
 {%- set content = snippet.templateContent -%}
