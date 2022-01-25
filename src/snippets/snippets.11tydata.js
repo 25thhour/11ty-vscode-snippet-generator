@@ -1,7 +1,6 @@
 module.exports = {
   eleventyComputed: {
-    indent: (data) => data.spaceIndent,
-    permalink: (data) => `${data.page.filePathStem}.json`,
+    indent: (data) => data.spaceIndent
   },
-  layout: "snippet.njk",
+  permalink: false
 };
