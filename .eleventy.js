@@ -15,7 +15,9 @@ module.exports = function (eleventyConfig) {
         newLine = line.replace(/\t/g, "\\t");
       } else {
         // add a \t for each space tab according to indentCount
-        newLine = newLine.trimStart().replace(/^/, "\\t".repeat(indentCount / spaceIndent));
+        newLine = newLine
+          .trimStart()
+          .replace(/^/, "\\t".repeat(indentCount / spaceIndent));
       }
       // don't add a comma after the last line
       return index === snippet.length - 1 ? `"${newLine}"` : `"${newLine}",`;
@@ -27,14 +29,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("isArray", (value) => Array.isArray(value));
 
   // get all subdirs under src/snippets
-  const snippetDirs = fs.readdirSync("./src/snippets", { withFileTypes: true })
-    .filter(item => item.isDirectory())
-    .map(item => item.name)
-  console.log(snippetDirs)
+  const snippetDirs = fs
+    .readdirSync("./src/snippets", { withFileTypes: true })
+    .filter((item) => item.isDirectory())
+    .map((item) => item.name);
 
   // create a collection for each subdir under src/snippets
   for (const dir of snippetDirs) {
-    eleventyConfig.addCollection(`${dir}`, function(collection) {
+    eleventyConfig.addCollection(`${dir}`, function (collection) {
       return collection.getFilteredByGlob(`src/snippets/${dir}/**/*.njk`);
     });
   }
