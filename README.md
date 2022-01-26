@@ -152,4 +152,10 @@ cp ./dist/snippets/javascript/javascript.json ~/Library/Application\ Support/Cod
 
 ---
 
-## ⚠️ Note: this project hasn't been tested on Windows ⚠️
+## Credits
+
+Inspired by https://snippet-generator.app/
+
+---
+
+> ⚠️ Note: this project hasn't been tested on Windows ⚠️
