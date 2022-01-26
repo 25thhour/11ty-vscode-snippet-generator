@@ -2,19 +2,23 @@
 
 Zero configuration tool built with [11ty](https://11ty.dev) to generate [vscode snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets) from raw code blocks.
 
-## Pre-requisites
+## Requirements
 
 11ty requires [Node](https://nodejs.org/) >= 10
 
 ## Getting Started
 
 ```
-git clone 25thhour/11ty-vscode-snippet-generator
+git clone https://github.com/25thhour/11ty-vscode-snippet-generator
 cd 11ty-vscode-snippet-generator
 npm install
 ```
 
-To start creating your own snippet collection, first create a subdirectory under `./src/snippets/` named after one of the [supported vscode language _identifiers_](https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers).
+Run `npm run dev` to watch for changes and start creating your own snippet collections 🔥
+
+### Folder Structure
+
+First create a subdirectory under `./src/snippets/` named after one of the [supported vscode language _identifiers_](https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers).
 
 e.g. for javascript snippets:
 
@@ -99,7 +103,7 @@ for (const ${2:element} of ${1:array}) {
 
 > Default state requires zero configuration and assumes (and has only been tested with) [Nunjucks templates](https://www.11ty.dev/docs/languages/nunjucks/).
 
-1. Run `npm run dev` to watch for changes in the `./src/snippets/` directory and generate snippets automatically.
+1. Run `npm run dev` to watch for changes in `./src/snippets/*`.
 2. Create each code snippet(s) in `./src/snippets/<language-identifier>/<snippet-name>.njk`
 
    e.g. `./src/snippets/javascript/for-loop.njk`
