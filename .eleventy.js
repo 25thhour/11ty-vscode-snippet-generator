@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("formatSnippetBody", function (content, indent) {
     // escape " and create array of lines
@@ -22,13 +24,26 @@ module.exports = function (eleventyConfig) {
     return formattedSnippet.join("\n");
   });
 
-  eleventyConfig.addFilter('isArray', value => Array.isArray(value))
+  eleventyConfig.addFilter("isArray", (value) => Array.isArray(value));
+
+  // get all subdirs under src/snippets
+  const snippetDirs = fs.readdirSync("./src/snippets", { withFileTypes: true })
+    .filter(item => item.isDirectory())
+    .map(item => item.name)
+  console.log(snippetDirs)
+
+  // create a collection for each subdir under src/snippets
+  for (const dir of snippetDirs) {
+    eleventyConfig.addCollection(`${dir}`, function(collection) {
+      return collection.getFilteredByGlob(`src/snippets/${dir}/**/*.njk`);
+    });
+  }
 
   return {
     dir: {
-      input: "snippets",
+      input: "src",
       output: "dist",
-      includes: "../_includes",
+      includes: "_includes",
     },
   };
 };
