@@ -9,7 +9,7 @@
     "clean": "rimraf dist .vscode",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy --watch",
     "dev": "npx @11ty/eleventy --watch",
-    "prettier": "npx prettier --write dist/**/**.{json,code-snippets}",
+    "prettier": "npx prettier --parser json --write dist/**/**.{json,code-snippets}",
     "start": "npx @11ty/eleventy --serve"
   },
   "keywords": [
